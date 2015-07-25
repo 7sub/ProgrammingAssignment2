@@ -26,5 +26,71 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
+## cacheSolve calculates the inverse of the matrix created in makeCacheMatrix
+## If the inverted matrix does not exist in cache,
+## it is created in the working environment and it's inverted value
+## stored in cache
+cacheSolve <- function(x, ...) {
+        ## attempt to get the inverse of the matrix stored in cache
+        cache <- x$getInverse()
+
+        # return inverted matrix from cache if it exists
+        # else create the matrix in working environment
+        if (!is.null(cache)) {
+                message("getting cached data")
+
+                # display matrix in console
+                return(cache)
+        }
+
+        # create matrix since it does not exist
+        matrix <- x$get()
+
+        # make sure matrix is square and invertible
+        # if not, handle exception cleanly
+        tryCatch( {
+                # set and return inverse of matrix
+                cache <- solve(matrix, ...)
+        },
+        error = function(e) {
+                message("Error:")
+                message(e)
+
+                return(NA)
+        },
+        warning = function(e) {
+                message("Warning:")
+                message(e)
+
+                return(NA)
+        },
+        finally = {
+                # set inverted matrix in cache
+                x$setMatrix(cache)
+        } )
+
+        # display matrix in console
+        return (cache)
+}
+
+## > To test the functions
+## > source("cachematrix.R")    load cachematrix.R program
+##  
+## > b <- makeCacheMatrix()     create makeCacheMatrix function
+## > b$set(matrix(1:4, 2, 2))   create matrix in working environment
+## > cacheSolve(b)              First run returns inverted matrix from working environment
+##
+##      [,1] [,2]               Result returns
+## [1,]   -2  1.5
+## [2,]    1 -0.5
+##
+## > cacheSolve(b)              Second run of cacheSolve(b) 
+##                              returns inverted matrix from cache
+## 
+## The system is getting the cached data          
+##       [,1] [,2]
+## [1,]   -2  1.5
+## [2,]    1 -0.5
+
 
 
