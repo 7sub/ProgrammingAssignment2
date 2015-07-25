@@ -37,7 +37,7 @@ cacheSolve <- function(x, ...) {
         # return inverted matrix from cache if it exists
         # else create the matrix in working environment
         if (!is.null(cache)) {
-                message("getting cached data")
+                message("The system is getting the cached data")
 
                 # display matrix in console
                 return(cache)
