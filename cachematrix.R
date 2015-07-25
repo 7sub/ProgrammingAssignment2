@@ -85,9 +85,9 @@ cacheSolve <- function(x, ...) {
 ## [2,]    1 -0.5
 ##
 ## > cacheSolve(b)              Second run of cacheSolve(b) 
-##                              returns inverted matrix from cache
+##                              
 ## 
-## The system is getting the cached data          
+## The system is getting the cached data     returns inverted matrix from cache     
 ##       [,1] [,2]
 ## [1,]   -2  1.5
 ## [2,]    1 -0.5
