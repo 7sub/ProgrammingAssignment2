@@ -31,6 +31,7 @@ makeCacheMatrix <- function(x = matrix()) {
 ## If the inverted matrix does not exist in cache,
 ## it is created in the working environment and it's inverted value
 ## stored in cache
+
 cacheSolve <- function(x, ...) {
         ## attempt to get the inverse of the matrix stored in cache
         cache <- x$getInverse()
