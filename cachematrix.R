@@ -39,8 +39,9 @@ cacheSolve <- function(x, ...) {
         # else create the matrix in working environment
         if (!is.null(cache)) {
                 message("The system is getting the cached data")
-
-                # display matrix in console
+      
+                #Return a matrix that is the inverse of 'x' 
+                # and display matrix in console
                 return(cache)
         }
 
@@ -70,7 +71,8 @@ cacheSolve <- function(x, ...) {
                 x$setMatrix(cache)
         } )
 
-        # display matrix in console
+        #Return a matrix that is the inverse of 'x' 
+        #and display matrix in console
         return (cache)
 }
 
@@ -87,7 +89,6 @@ cacheSolve <- function(x, ...) {
 ##
 ## > cacheSolve(b)              Second run of cacheSolve(b) 
 ##                              
-## 
 ## The system is getting the cached data     returns inverted matrix from cache     
 ##       [,1] [,2]
 ## [1,]   -2  1.5
